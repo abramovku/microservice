@@ -14,3 +14,10 @@ To deploy this project run
   docker run --name service -d -p 8000:80 microservice
 ```
 
+or 
+
+```bash
+  docker pull abramovku/microservice:0.2
+  docker run --name service -d -p 8000:80 abramovku/microservice:0.2
+```
+
