@@ -11,6 +11,6 @@ To deploy this project run
 
 ```bash
   docker build -t microservice .
-  docker run --name service -d -p 8000:8000 microservice
+  docker run --name service -d -p 8000:80 microservice
 ```
 
