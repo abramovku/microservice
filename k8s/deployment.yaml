@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microservice-deployment
+  labels:
+    app: microservice
+spec:
+  replicas: 2
+  minReadySeconds: 10
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: microservice
+  template:
+    metadata:
+      labels:
+        app: microservice
+    spec:
+      containers:
+        - name: microservice-container
+          image: abramovku/microservice:0.2
+          ports:
+            - name: web
+              containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: microservice-service
+spec:
+  selector:
+    app: microservice
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: web
