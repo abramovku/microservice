@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: microservice-container
-          image: abramovku/microservice:0.2
+          image: abramovku/microservice:0.3
           ports:
             - name: web
               containerPort: 80
